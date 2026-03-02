@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Recorder - Harazimiyya Forum</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .recorder-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .recorder-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .recorder-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: #0b5e3b;
+    }
+    
+    .recorder-status {
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      background: #f8f9fa;
+      font-size: 1.1rem;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .recorder-status.recording {
+      background: #fff3cd;
+      color: #856404;
+      border: 2px solid #ffeaa7;
+    }
+    
+    .recorder-status.uploading {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 2px solid #bee5eb;
+    }
+    
+    .recorder-status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+    }
+    
+    .recorder-status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 2px solid #f5c6cb;
+    }
+    
+    .recorder-timer {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 1.5rem 0;
+      color: #0b5e3b;
+      font-family: monospace;
+    }
+    
+    .recorder-waveform {
+      height: 100px;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .waveform-canvas {
+      width: 100%;
+      height: 100%;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    
+    .recorder-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .control-btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      min-width: 150px;
+      justify-content: center;
+    }
+    
+    .record-btn {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .record-btn:hover {
+      background: #c82333;
+      transform: scale(1.05);
+    }
+    
+    .record-btn.recording {
+      background: #ff6b6b;
+      animation: pulse 1.5s infinite;
+    }
+    
+    .stop-btn {
+      background: #6c757d;
+      color: white;
+    }
+    
+    .stop-btn:hover {
+      background: #5a6268;
+      transform: scale(1.05);
+    }
+    
+    .play-btn {
+      background: #28a745;
+      color: white;
+    }
+    
+    .play-btn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+    
+    .upload-btn {
+      background: #0b5e3b;
+      color: white;
+    }
+    
+    .upload-btn:hover {
+      background: #094c31;
+      transform: scale(1.05);
+    }
+    
+    .upload-btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    
+    .audio-player {
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+    
+    .audio-player audio {
+      width: 100%;
+    }
+    
+    .recording-list {
+      margin-top: 2rem;
+      text-align: left;
+    }
+    
+    .recording-item {
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #0b5e3b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .recording-info {
+      flex: 1;
+    }
+    
+    .recording-name {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+    
+    .recording-meta {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .recording-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .action-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    
+    .play-action {
+      background: #28a745;
+      color: white;
+    }
+    
+    .delete-action {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .empty-list {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .progress-bar {
+      height: 6px;
+      background: #e9ecef;
+      border-radius: 3px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: #0b5e3b;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    
+    .progress-text {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+      padding: 0.8rem 1.5rem;
+      background: #0b5e3b;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    
+    .nav-btn:hover {
+      background: #094c31;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Voice Recorder</h1>
+  <p class="subtitle">Record and share voice messages</p>
+</header>
+
+<main class="container">
+  <div class="card">
+    <div class="recorder-container">
+      
+      <!-- Recorder Card -->
+      <div class="recorder-card">
+        <div class="recorder-icon">🎤</div>
+        <h2>Voice Recorder</h2>
+        <p>Record voice messages to share in the group chat</p>
+        
+        <!-- Status Display -->
+        <div class="recorder-status" id="statusDisplay">
+          Ready to record
+        </div>
+        
+        <!-- Timer -->
+        <div class="recorder-timer" id="timerDisplay">
+          00:00
+        </div>
+        
+        <!-- Waveform Visualization -->
+        <div class="recorder-waveform">
+          <canvas id="waveformCanvas" class="waveform-canvas"></canvas>
+        </div>
+        
+        <!-- Recording Controls -->
+        <div class="recorder-controls">
+          <button class="control-btn record-btn" id="recordBtn">
+            <span>●</span> Record
+          </button>
+          <button class="control-btn stop-btn" id="stopBtn" disabled>
+            <span>■</span> Stop
+          </button>
+          <button class="control-btn play-btn" id="playBtn" disabled>
+            <span>▶</span> Play
+          </button>
+          <button class="control-btn upload-btn" id="uploadBtn" disabled>
+            <span>📤</span> Upload to Chat
+          </button>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">
+          Ready
+        </div>
+        
+        <!-- Audio Player -->
+        <div class="audio-player" id="audioPlayer" style="display: none;">
+          <audio id="audioPlayback" controls></audio>
+        </div>
+      </div>
+      
+      <!-- Recent Recordings -->
+      <div class="recording-list">
+        <h3>Recent Recordings</h3>
+        <div id="recordingsList">
+          <p class="empty-list">No recordings yet. Start recording!</p>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <div class="nav-buttons">
+        <a href="chat.html" class="nav-btn">
+          <span>💬</span> Back to Chat
+        </a>
+        <a href="home.html" class="nav-btn">
+          <span>🏠</span> Home
+        </a>
+        <a href="#" class="nav-btn" id="logoutBtn">
+          <span>🚪</span> Logout
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <small>© Harazimiyya Forum • Voice Recorder</small>
+</footer>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+<script src="../js/firebase.js"></script>
+
+<!-- Voice Recorder JS -->
+<script src="../js/voice-recorder.js"></script>
+
+</body>
+</html>

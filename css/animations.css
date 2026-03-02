@@ -1,0 +1,49 @@
+/* Make everything scale properly */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Better touch targets for mobile */
+button, 
+.btn, 
+.menu-btn, 
+.close-sidebar,
+.logout-btn,
+.logout-btn-sidebar,
+.clickable {
+    min-height: 44px;  /* Good for fat fingers */
+    min-width: 44px;
+}
+
+/* Fix images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix tables */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+
+.fade {
+  animation: fade .4s ease forwards;
+}
+
+.slide {
+  animation: slide .4s ease forwards;
+}
+
+@keyframes fade {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slide {
+  from { transform: translateY(15px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sheikh History | Harazimiyya Forum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/sheikh-history.css">
+</head>
+<body>
+
+<!-- SIDEBAR (HOME STYLE) -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Harazimiyya Forum</h3>
+    <button id="closeSidebar">&times;</button>
+  </div>
+
+  <ul class="sidebar-links">
+    <li><a href="home.html">🏠 Home</a></li>
+      <li><a href="member.html">📍 Members</a></li>
+      <li><a href="chat.html">💬 Chat</a></li>
+      <li><a href="events.html">📅 Programs</a></li>
+      <li><a href="gallery.html">🖼️ Gallery</a></li>
+      <li><a href="sheikh-history.html">📖 Sheikh History</a></li>
+      <li><a href="announcement.html">📢 Announcements</a></li>
+      <li><a href="events.html" class="active">📅 Events</a></li>
+      <li><a href="admin.html">📍 admin dash board</a></li>
+  </ul>
+
+  <button id="logoutBtn" class="logout-btn">Logout</button>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- HEADER -->
+<header class="app-header">
+  <button class="menu-btn" id="openSidebar">☰</button>
+  <h1>Sheikh Mahadi (R.T.A)</h1>
+  <p class="subtitle">Biography, teachings, and spiritual legacy</p>
+</header>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <header class="page-header">
+    <div>
+      <h2>Sheikh History</h2>
+      <p>Life, teachings and spiritual legacy</p>
+    </div>
+
+    <button id="addSectionBtn" class="primary-btn hidden">
+      + Add Content
+    </button>
+  </header>
+
+  <!-- PROFILE -->
+  <section class="sheikh-profile">
+    <img src="/assets/images/sheikh-placeholder.png" alt="Sheikh">
+    <div>
+      <h2>Sheikh Mahadi</h2>
+      <p class="title">Spiritual Leader of Harazimiyya Forum</p>
+      <p class="quote">
+        “Knowledge without sincerity is a burden; sincerity without knowledge is blind.”
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section id="contentArea" class="content-area"></section>
+
+</main>
+
+<!-- MODAL -->
+<div id="uploadModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Add Sheikh Content</h3>
+
+    <select id="contentType">
+      <option value="text">Text</option>
+      <option value="image">Image</option>
+      <option value="video">Video</option>
+    </select>
+
+    <input type="text" id="contentTitle" placeholder="Title">
+    <textarea id="contentText" placeholder="Write content..."></textarea>
+
+    <input type="file" id="fileInput" hidden>
+
+    <div class="modal-actions">
+      <button id="selectFileBtn">Select File</button>
+      <button id="saveContentBtn" class="primary-btn">Save</button>
+      <button id="closeModalBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+<script src="../js/sheikh-history.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harazimiyya Forum | Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/events.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Harazimiyya Forum</h3>
+    <button id="closeSidebar">&times;</button>
+  </div>
+
+  <ul class="sidebar-links">
+  <li><a href="home.html">🏠 Home</a></li>
+      <li><a href="member.html">📍 Members</a></li>
+      <li><a href="chat.html">💬 Chat</a></li>
+      <li><a href="events.html">📅 Programs</a></li>
+      <li><a href="gallery.html">🖼️ Gallery</a></li>
+      <li><a href="sheikh-history.html">📖 Sheikh History</a></li>
+      <li><a href="announcement.html">📢 Announcements</a></li>
+      <li><a href="events.html" class="active">📅 Events</a></li>
+      <li><a href="admin.html">📍 admin dash board</a></li>
+  </ul>
+
+  <button id="logoutBtn" class="logout-btn">Logout</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- HEADER -->
+<header class="app-header">
+  <button class="menu-btn" id="openSidebar">☰</button>
+  <h1>Events & Programs</h1>
+  <p class="subtitle">Upcoming Moulud and community gatherings</p>
+</header>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <div class="page-header">
+    <button id="createEventBtn" class="primary-btn">
+      + Create Event
+    </button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="upcoming">Upcoming</button>
+    <button class="tab" data-tab="past">Past</button>
+    <button class="tab" data-tab="mine">My Events</button>
+  </div>
+
+  <!-- Events -->
+  <section id="eventsContainer" class="events-grid"></section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+<script src="../js/events.js"></script>
+
+</body>
+</html>

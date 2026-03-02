@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Harazimiyya Forum | Community Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/chat.css">
+</head>
+<body>
+
+<!-- DeepSeek Sidebar (EXACTLY LIKE HOME DASHBOARD) -->
+<div class="deepseek-sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-area">
+            <i class="fas fa-mosque"></i>
+            <span class="logo-text">Harazimiyya</span>
+        </div>
+        <button class="close-sidebar" id="closeSidebar">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <div class="user-profile">
+        <div class="user-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+            <h4 id="userName">Member</h4>
+            <p><i class="fas fa-user-tag"></i> Community Member</p>
+        </div>
+    </div>
+    
+    <div class="sidebar-menu">
+        <div class="menu-section">
+            <h5 class="menu-title">MAIN</h5>
+            <ul class="menu-items">
+                <li>
+                    <a href="home.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="chat.html">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="events.html">
+                        <i class="fas fa-calendar"></i>
+                        <span>Programs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="map.html">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gallery.html">
+                        <i class="fas fa-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sheikh-history.html">
+                        <i class="fas fa-star-and-crescent"></i>
+                        <span>Sheikh History</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="announcement.html">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin.html">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="sidebar-footer">
+        <button class="logout-btn-sidebar" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </button>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Chat Main -->
+<div class="chat-layout">
+    <main class="chat-main">
+        <header class="chat-header">
+            <div class="chat-header-top">
+                <div class="chat-header-title">
+                    <button class="menu-btn" id="openSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h3>Community Chat</h3>
+                </div>
+                <span id="onlineCount" class="online-count">0 online</span>
+            </div>
+            <div class="chat-header-bottom">
+                <select id="userSelect" class="user-select">
+                    <option value="">👥 Select user to chat...</option>
+                </select>
+            </div>
+        </header>
+
+        <section id="messages" class="messages"></section>
+
+        <footer class="chat-input-area">
+            <input type="text" id="messageInput" placeholder="Write a message...">
+            <input type="file" id="fileInput" hidden>
+            
+            <button id="imageBtn" class="media-btn" title="Send Image">
+                <i class="fas fa-image"></i>
+            </button>
+            <button id="voiceBtn" class="media-btn" title="Voice Message">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <button id="videoBtn" class="media-btn" title="Send Video">
+                <i class="fas fa-video"></i>
+            </button>
+            <button id="sendBtn" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </footer>
+    </main>
+</div>
+
+<!-- Recording Timer -->
+<div id="recordingTimer" class="recording-timer"></div>
+
+<!-- Audio Player -->
+<audio id="audioPlayer"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+<script src="../js/chat.js"></script>
+
+</body>
+</html>

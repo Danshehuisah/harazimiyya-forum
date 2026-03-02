@@ -1,0 +1,85 @@
+/* Make everything scale properly */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Better touch targets for mobile */
+button, 
+.btn, 
+.menu-btn, 
+.close-sidebar,
+.logout-btn,
+.logout-btn-sidebar,
+.clickable {
+    min-height: 44px;  /* Good for fat fingers */
+    min-width: 44px;
+}
+
+/* Fix images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix tables */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 260px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  color: white;
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar .logo {
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.sidebar li {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.sidebar li:hover {
+  background: rgba(255,255,255,.15);
+}
+
+.sidebar.collapsed li span {
+  display: none;
+}
+
+.main {
+  margin-left: 260px;
+  padding: 2rem;
+  transition: var(--transition);
+}
+
+.sidebar.collapsed ~ .main {
+  margin-left: 80px;
+}

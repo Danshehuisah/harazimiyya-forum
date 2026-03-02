@@ -1,0 +1,258 @@
+/* Make everything scale properly */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Better touch targets for mobile */
+button, 
+.btn, 
+.menu-btn, 
+.close-sidebar,
+.logout-btn,
+.logout-btn-sidebar,
+.clickable {
+    min-height: 44px;  /* Good for fat fingers */
+    min-width: 44px;
+}
+
+/* Fix images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix tables */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ===============================
+   BODY
+================================ */
+body {
+  background: #f4f6f8;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.app-header {
+  background: #0b5e3b; /* Islamic Green */
+  color: white;
+  padding: 1.4rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* ===============================
+   CONTAINER
+================================ */
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* ===============================
+   CARD
+================================ */
+.card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  color: #0b5e3b;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/* ===============================
+   INPUTS
+================================ */
+input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0b5e3b;
+}
+
+/* ===============================
+   PASSWORD CONTAINER
+================================ */
+.password-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.password-container input {
+  margin-bottom: 0;
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  background: none;
+  color: #0b5e3b;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-toggle i {
+  font-size: 1.1rem;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+button {
+  width: 100%;
+  background: #0b5e3b;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #188054;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   SWITCH TEXT
+================================ */
+.switch {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.switch span {
+  color: #0b5e3b;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.switch span:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.app-footer {
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* ===============================
+   UTILITIES
+================================ */
+.hidden {
+  display: none !important;
+}
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 1rem;
+    }
+    
+    .app-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card h2 {
+        font-size: 1.3rem;
+    }
+    
+    input {
+        padding: 12px;
+        font-size: 16px;  /* Prevents zoom on iPhone */
+    }
+    
+    .password-container {
+        margin: 10px 0;
+    }
+    
+    button {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .password-toggle {
+        right: 10px;
+    }
+}

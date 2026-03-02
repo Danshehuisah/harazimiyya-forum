@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery | Harazimiyya Forum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2>🕌 Harazimiyya</h2>
+        <button id="closeSidebar">&times;</button>
+    </div>
+
+    <nav class="nav-links">
+        <li><a href="home.html">🏠 Home</a></li>
+      <li><a href="member.html">📍 Members</a></li>
+      <li><a href="chat.html">💬 Chat</a></li>
+      <li><a href="events.html">📅 Programs</a></li>
+      <li><a href="gallery.html">🖼️ Gallery</a></li>
+      <li><a href="sheikh-history.html">📖 Sheikh History</a></li>
+      <li><a href="announcement.html">📢 Announcements</a></li>
+      <li><a href="events.html" class="active">📅 Events</a></li>
+      <li><a href="admin.html">📍 admin dash board</a></li>
+    </nav>
+
+    <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- MAIN -->
+<main class="main-content">
+
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <button id="openSidebar" class="menu-btn"><i class="fas fa-bars"></i></button>
+            <div>
+                <h1>Gallery</h1>
+                <p>Images and videos from our programs and activities</p>
+            </div>
+        </div>
+        <button id="addMediaBtn" class="primary-btn hidden">
+            <i class="fas fa-plus"></i> Add Media
+        </button>
+    </div>
+
+    <section id="galleryGrid" class="gallery-grid"></section>
+
+</main>
+
+<!-- UPLOAD MODAL -->
+<div id="galleryModal" class="modal hidden">
+    <div class="modal-content">
+        <h3>Add Gallery Media</h3>
+
+        <select id="mediaType">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+        </select>
+
+        <input type="text" id="mediaTitle" placeholder="Title" />
+        <input type="file" id="mediaFile" />
+
+        <div class="modal-actions">
+            <button id="saveMediaBtn" class="primary-btn"><i class="fas fa-save"></i> Save</button>
+            <button id="closeGalleryModalBtn" class="ghost-btn"><i class="fas fa-times"></i> Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+<script src="../js/gallery.js"></script>
+</body>
+</html>

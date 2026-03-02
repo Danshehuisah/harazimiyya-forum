@@ -1,0 +1,98 @@
+/* /css/components.css - Additional styles */
+
+/* Event Components */
+.event-item {
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #0b5e3b;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.event-item:hover {
+  background: #f0f9f0;
+  transform: translateX(5px);
+}
+
+.event-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.event-date {
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.event-location {
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+/* Announcement Components */
+.announcement-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.announcement-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-content {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-date {
+  color: #888;
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+/* User Components */
+.user-role {
+  background: #e8f5e9;
+  color: #0b5e3b;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.user-status {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.no-events {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 2rem;
+}

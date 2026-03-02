@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements | Harazimiyya Forum</title>
+  <link rel="stylesheet" href="../css/announcement.css">
+
+  <!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h3>Harazimiyya Forum</h3>
+      <button id="closeSidebar">&times;</button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="home.html">🏠 Home</a></li>
+      <li><a href="chat.html">💬 Chat</a></li>
+      <li><a href="events.html">📅 Programs</a></li>
+      <li><a href="map.html">📍 Map</a></li>
+      <li><a href="gallery.html">🖼️ Gallery</a></li>
+      <li><a href="sheikh-history.html">📖 Sheikh History</a></li>
+      <li><a href="announcement.html">📢 Announcements</a></li>
+      <li><a href="events.html" class="active">📅 Events</a></li>
+      <li><a href="admin.html">📍 admin dash board</a></li>
+    </ul>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <button class="menu-btn" id="openSidebar">☰</button>
+    <h1>Announcements</h1>
+    <p class="subtitle">Stay updated with the latest messages from the forum</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <button id="addAnnouncementBtn" class="primary-btn hidden">+ Add Announcement</button>
+    <section id="announcementArea" class="announcement-area">
+      <!-- announcements will load here -->
+    </section>
+  </main>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/announcement.js" defer></script>
+</body>
+</html>

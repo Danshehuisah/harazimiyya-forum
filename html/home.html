@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harazimiyya Forum - Home</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- CSS - CORRECT PATHS -->
+  <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+
+  <!-- DeepSeek Sidebar (EXACTLY like admin) -->
+  <div class="deepseek-sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-area">
+        <i class="fas fa-mosque"></i>
+        <span class="logo-text">Harazimiyya</span>
+      </div>
+      <button class="close-sidebar" id="closeSidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="user-profile">
+      <div class="user-avatar">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="user-info">
+        <h4 id="userName">Member</h4>
+        <p><i class="fas fa-user-tag"></i> Community Member</p>
+      </div>
+    </div>
+    
+    <div class="sidebar-menu">
+      <div class="menu-section">
+        <h5 class="menu-title">MAIN</h5>
+        <ul class="menu-items">
+          <li class="active">
+            <a href="home.html">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          
+          <li>
+            <a href="chat.html">
+              <i class="fas fa-comments"></i>
+              <span>Chat</span>
+            </a>
+          </li>
+          <li>
+            <a href="events.html">
+              <i class="fas fa-calendar"></i>
+              <span>Programs</span>
+            </a>
+
+           <li>
+            <a href="map.html">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Map</span>
+            </a>
+          </li>
+          </li>
+          <li>
+            <a href="gallery.html">
+              <i class="fas fa-images"></i>
+              <span>Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="sheikh-history.html">
+              <i class="fas fa-star-and-crescent"></i>
+              <span>Sheikh History</span>
+            </a>
+          </li>
+          <li>
+            <a href="announcement.html">
+              <i class="fas fa-bullhorn"></i>
+              <span>Announcements</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin.html">
+              <i class="fas fa-user-shield"></i>
+              <span>Admin</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sidebar-footer">
+      <button class="logout-btn-sidebar" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- YOUR EXACT HOME INTERFACE - UNCHANGED -->
+  <header class="app-header">
+    <button class="menu-btn" id="openSidebar">☰</button>
+    <h1>Harazimiyya Forum</h1>
+    <p class="subtitle">Unity • Knowledge • Brotherhood • Spiritual Growth</p>
+  </header>
+
+  <main class="container">
+    <!-- Dashboard -->
+    <section class="card" id="dashboardCard">
+      <div class="welcome-section">
+        <h2>Welcome, <span id="userName">Member</span></h2>
+        <p>Stay connected with your community.</p>
+      </div>
+
+      <hr>
+
+      <div class="stats-grid">
+        <!-- Announcement Box -->
+        <div class="stat-box clickable" id="announcementBox">
+          <h3 id="announcementCount">0</h3>
+          <p>Announcements</p>
+        </div>
+
+        <!-- Programs Box -->
+        <div class="stat-box clickable" id="eventBox">
+          <h3 id="eventCount">0</h3>
+          <p>Upcoming Programs</p>
+        </div>
+
+        <!-- Messages Box -->
+        <div class="stat-box clickable" id="messageBox">
+          <h3 id="messageCount">0</h3>
+          <p>Unread Messages</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="actions">
+        <!-- <a href="announcement.html" class="btn">📢 Announcements</a>
+        <a href="events.html" class="btn">📅 Programs</a>
+        <a href="chat.html" class="btn">💬 Chat</a>
+        <a href="gallery.html" class="btn">🖼️ Gallery</a>
+        <a href="sheikh-history.html" class="btn">📖 Sheikh History</a> -->
+            <!-- Add this button somewhere on your home page, maybe after the stats grid -->
+<div >
+    <button onclick="forceRefreshCount()" style="background: #0b5e3b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 16px;">
+        🔄 Refresh Messages
+    </button>
+</div>
+      </div>
+
+      <hr>
+
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>© 2026 Harazimiyya Forum</small>
+  </footer>
+
+  <!-- JavaScript - CORRECT PATHS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/home.js"></script>
+
+</body>
+</html>
+
+
+
+
+

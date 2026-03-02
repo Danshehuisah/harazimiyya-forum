@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harazimiyya Forum - Login</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>Harazimiyya Forum</h1>
+        <p class="subtitle">Unity • Knowledge • Brotherhood</p>
+    </header>
+
+    <main class="container">
+        <!-- Login Card -->
+        <section class="card" id="authCard">
+            <h2>Welcome Back</h2>
+            <input type="email" id="email" placeholder="Email Address" />
+            
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" />
+                <button type="button" class="password-toggle" id="togglePassword" tabindex="-1">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            
+            <button id="loginBtn">Login</button>
+            
+            <!-- Forgot Password Link -->
+            <div style="text-align: right; margin-top: 8px;">
+                <span id="forgotPassword" style="color: #0b5e3b; font-size: 0.85rem; cursor: pointer; font-weight: 600;">Forgot Password?</span>
+            </div>
+            
+            <p class="switch">Don't have an account? <span id="showRegister">Register</span></p>
+        </section>
+
+        <!-- Register Card -->
+        <section class="card hidden" id="registerCard">
+            <h2>Join Our Community</h2>
+            <input type="text" id="regName" placeholder="Full Name" />
+            <input type="email" id="regEmail" placeholder="Email Address (must be @gmail.com)" />
+            
+            <div class="password-container">
+                <input type="password" id="regPassword" placeholder="Password (min 6 characters)" />
+                <button type="button" class="password-toggle" id="toggleRegPassword" tabindex="-1">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            
+            <div class="password-container">
+                <input type="password" id="regConfirmPassword" placeholder="Confirm Password" />
+                <button type="button" class="password-toggle" id="toggleRegConfirmPassword" tabindex="-1">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            
+            <button id="registerBtn">Create Account</button>
+            <p class="switch">Already have an account? <span id="showLogin">Login</span></p>
+        </section>
+        
+        <!-- Forgot Password Card (NEW) -->
+        <section class="card hidden" id="forgotCard">
+            <h2>Reset Password</h2>
+            <p style="text-align: center; margin-bottom: 15px; color: #666; font-size: 0.9rem;">
+                Enter your email address and we'll send you a link to reset your password.
+            </p>
+            <input type="email" id="resetEmail" placeholder="Your Email Address" />
+            <button id="resetPasswordBtn">Send Reset Link</button>
+            <p class="switch"><span id="backToLogin">Back to Login</span></p>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <small>© 2025 Harazimiyya Forum. All rights reserved.</small>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
